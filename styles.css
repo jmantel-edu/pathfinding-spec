@@ -1,31 +1,40 @@
+/* #dabfff Mauve 
+   #907ad6 Soft Periwinkle
+   #4f518c Dusty Grape
+   #2c2a4a Space Indigo
+   #7fdeff Frozen Lake*/
 
-
-/* Sidebar -- This code borrowed from W3Schools */
+/* Sidebar -- This code adapted from W3Schools */
 /* https://www.w3schools.com/howto/howto_css_fixed_sidebar.asp */
 .sidenav {
   height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 160px; /* Set the width of the sidebar */
+  width: 30%; /* Set the width of the sidebar */
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
   left: 0;
-  background-color: #111; /* Black */
+  background-color: #dabfff;
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 20px;
 }
 
 /* The navigation menu links */
-.sidenav a {
+.sidenav .item {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: #111;
   display: block;
+  transition: text-shadow 0.3s ;
 }
 
 /* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-  color: #f1f1f1;
+.sidenav .item:hover {
+  text-shadow: 2px 2px 0px #7FDEFF
+}
+
+.sidenav .button {
+  box-shadow: 10px 10px 5px 0px rgba(22,119,161,0.75);
 }
 
 /* Style page content */
