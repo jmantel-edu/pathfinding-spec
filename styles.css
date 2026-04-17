@@ -1,3 +1,7 @@
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 /* #dabfff Mauve 
    #907ad6 Soft Periwinkle
    #4f518c Dusty Grape
@@ -8,43 +12,109 @@
 /* https://www.w3schools.com/howto/howto_css_fixed_sidebar.asp */
 .sidenav {
   height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 30%; /* Set the width of the sidebar */
+  width: 480px; /* Set the width of the sidebar */
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
   left: 0;
   background-color: #dabfff;
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 20px;
+  overflow-y: scroll;
+  padding-top: 0px;
+}
+
+.sidenav .hero {
+  transition: text-shadow 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045), color 0.3s ease
+}
+.sidenav .hero:hover {
+  color: #7fdeff;
+  text-shadow: 4px 4px 0px #907ad6, 8px 8px 0px #4f518c, 12px 12px 0px #2c2a4a;
 }
 
 /* The navigation menu links */
 .sidenav .item {
-  padding: 6px 8px 6px 16px;
+  padding: 6px 0px 0px 16px;
   text-decoration: none;
   font-size: 25px;
   color: #111;
   display: block;
-  transition: text-shadow 0.3s ;
+  transition: text-shadow 0.3s ease-in-out;
+}
+
+.sidenav label {
+  font-size: 22px
 }
 
 /* When you mouse over the navigation links, change their color */
-.sidenav .item:hover {
-  text-shadow: 2px 2px 0px #7FDEFF
+.sidenav .item h3:hover {
+  text-shadow: 4px 4px 0px #7FDEFF;
 }
 
 .sidenav .button {
-  box-shadow: 10px 10px 5px 0px rgba(22,119,161,0.75);
+  transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
-/* Style page content */
+.sidenav .button:hover {
+  box-shadow: 4px 4px 0px -1px #7FDEFF;
+  background-color: #7FDEFF;
+}
+
+.sidenav input[type="text"] {
+  transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.sidenav input[type="text"]:hover {
+  box-shadow: 4px 4px 0px -1px #7FDEFF;
+  background-color: #7FDEFF;
+}
+
 .main {
-  margin-left: 160px; /* Same as the width of the sidebar */
+  margin-left: 480px; /* Same as the width of the sidebar */
   padding: 0px 10px;
+  overflow-y: scroll;
+  overflow-x: scroll;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+}
+
+/* This code borrowed from CSS Button Generator */
+/* https://cssbuttongenerator.com */
+
+.buttonA {
+  font-size:15px;
+  width:140px;
+  height:50px;
+  border-width:1px;
+  color:#ffffff;
+  border-color:#7fdeff;
+  font-weight:bold;
+  border-radius: 6px;
+  box-shadow:inset 0px 1px 0px 0px #97c4fe;
+  text-shadow:inset 0px 1px 0px #1570cd;
+  background: linear-gradient(#3c3a5a, #2c2a4a);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.buttonA:hover {
+  background: linear-gradient(#2c2a4a, #3c3a5a);
+}
+
+#go {
+  background: linear-gradient(#3c8a5a, #2c6a4a);
+}
+
+#go:hover {
+  background: linear-gradient(#2c8a4a, #3caa5a);  
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
 }

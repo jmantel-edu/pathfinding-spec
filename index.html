@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="widt, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pathfinding Algorithm</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css">
@@ -11,16 +11,33 @@
     <!-- Side navigation -->
     <div class="sidenav">
         <div class="item">
-            <h1>Pathfinder</h1>
+            <h1 class="hero">Pathfinder</h1>
         </div>
         <div class="item" id="dimensions">
-
+            <h3>Dimensions</h3>
+            <input type="text" placeholder="Rows" size="5" id="rows"> x <input type="text" placeholder="Columns" size="5" id="columns">
+            <button id="update" type="button" class="button">Update</button>
+        </div>
+        <div class="item" id="algorithm">
+            <h3>Algorithm</h3>
+            <input type="radio" id="breadthfirst" name="algorithmsettings" checked><label for="breadthfirst">Breadth-First</label>
+            <input type="radio" id="astar" name="algorithmsettings"><label for="astar">A*</label>
+        </div>
+        <div class="item" id="step">
+            <h3>Step Settings</h3>
+            <input type="radio" id="timedSteps" name="stepsettings"><input type="text" id="stepsPerSec" placeholder="2" value="2" size="5"><label for="stepsPerSec">steps/sec (min. 0.1)</label><br>
+            <input type="radio" id="instant" name="stepsettings" checked><label for="instant">Instantly</label><br>
+            <input type="radio" id="onClickStep" name="stepsettings"><label for="onClickStep">On clicking "Step"</label>
+        </div>
+        <div class="item row" id="controls">
+            <p class="buttonA" id="go">Go!</p>
+            <p class="buttonA" id="step">Step</p>
         </div>
     </div>
 
 <!-- Page content -->
     <div class="main">
-        
+
     </div>
 </body>
 </html>
