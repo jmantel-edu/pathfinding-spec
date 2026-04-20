@@ -1,0 +1,4 @@
+// Disable Copilot everywhere
+{
+    "github.copilot.enable": { "*": false }
+}

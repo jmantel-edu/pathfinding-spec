@@ -4,7 +4,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pathfinding Algorithm</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="controls.css">
+    <link rel="stylesheet" href="table.css">
+    <script src="elements.js" defer></script>
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -23,21 +25,34 @@
             <input type="radio" id="breadthfirst" name="algorithmsettings" checked><label for="breadthfirst">Breadth-First</label>
             <input type="radio" id="astar" name="algorithmsettings"><label for="astar">A*</label>
         </div>
-        <div class="item" id="step">
+        <div class="item" id="stepSettings">
             <h3>Step Settings</h3>
             <input type="radio" id="timedSteps" name="stepsettings"><input type="text" id="stepsPerSec" placeholder="2" value="2" size="5"><label for="stepsPerSec">steps/sec (min. 0.1)</label><br>
             <input type="radio" id="instant" name="stepsettings" checked><label for="instant">Instantly</label><br>
             <input type="radio" id="onClickStep" name="stepsettings"><label for="onClickStep">On clicking "Step"</label>
+        </div><br>
+        <div class="item">
+            <h3>Controls</h3>
         </div>
-        <div class="item row" id="controls">
+        <div class="controls" id="updateStartGoalDiv" style="padding-bottom: 0px; padding-top: 0px; padding-left: 16px;">
+            <p class="buttonA" id="updateStart">Update Start</p>
+            <p class="buttonA" id="updateGoal">Update Goal</p>
+        </div>
+        <div class="controls item" id="goStepDiv">
             <p class="buttonA" id="go">Go!</p>
             <p class="buttonA" id="step">Step</p>
+        </div>
+        <div class="controls" id="resetClearDiv" style="padding-bottom: 0px; padding-top: 0px; padding-left: 16px;">
+            <p class="buttonA" id="reset">Reset</p>
+            <p class="buttonA" id="clear">Clear</p>
         </div>
     </div>
 
 <!-- Page content -->
     <div class="main">
+        <div id="table">
 
+        </div>
     </div>
 </body>
 </html>
