@@ -18,7 +18,7 @@
         <div class="item" id="dimensions">
             <h3>Dimensions</h3>
             <input type="text" placeholder="Rows" size="5" id="rows"> x <input type="text" placeholder="Columns" size="5" id="columns">
-            <button id="update" type="button" class="button">Update</button>
+            <button id="update" type="button" class="button" onclick="createNewTable()">Update</button>
         </div>
         <div class="item" id="algorithm">
             <h3>Algorithm</h3>
@@ -35,16 +35,16 @@
             <h3>Controls</h3>
         </div>
         <div class="controls" id="updateStartGoalDiv" style="padding-bottom: 0px; padding-top: 0px; padding-left: 16px;">
-            <p class="buttonA" id="updateStart">Update Start</p>
-            <p class="buttonA" id="updateGoal">Update Goal</p>
+            <p class="buttonA" id="updateStart" onclick="myTable.changeStart();">Update Start</p>
+            <p class="buttonA" id="updateGoal" onclick="myTable.changeGoal();">Update Goal</p>
         </div>
         <div class="controls item" id="goStepDiv">
-            <p class="buttonA" id="go">Go!</p>
+            <p class="buttonA" id="go" onclick="myTable.go();">Go!</p>
             <p class="buttonA" id="step">Step</p>
         </div>
         <div class="controls" id="resetClearDiv" style="padding-bottom: 0px; padding-top: 0px; padding-left: 16px;">
-            <p class="buttonA" id="reset">Reset</p>
-            <p class="buttonA" id="clear">Clear</p>
+            <p class="buttonA" id="reset" onclick="myTable.render();">Reset</p>
+            <p class="buttonA" id="clear" onclick="tryClear();">Clear</p>
         </div>
     </div>
 

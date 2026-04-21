@@ -7,3 +7,18 @@
    #4f518c Dusty Grape
    #2c2a4a Space Indigo
    #7fdeff Frozen Lake*/
+
+table, th, td {
+  border: 1px solid black;
+}
+
+td {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.wall {
+  background-color: gray;
+}
