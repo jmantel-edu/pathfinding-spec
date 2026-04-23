@@ -9,27 +9,6 @@
     o	Goal extends Cell
  */
 
-function indexOf2dArray(array2d, itemtofind) {
-    // This code borrowed from lage.us
-    // https://lage.us/Javascript-Item-in-2d-Array-Using-indexOf.html
-    index = [].concat.apply([], ([].concat.apply([], array2d))).indexOf(itemtofind);
-                
-    // return "false" if the item is not found
-    if (index === -1) { return false; }
-    
-    // Use any row to get the rows' array length
-    // Note, this assumes the rows are arrays of the same length
-    numColumns = array2d[0].length;
-    
-    // row = the index in the 1d array divided by the row length (number of columns)
-    row = parseInt(index / numColumns);
-    
-    // col = index modulus the number of columns
-    col = index % numColumns;
-    
-    return [row, col]; 
-}
-
 class Table {
     constructor(width, height) {
         this.width = width; // Columns
@@ -42,12 +21,22 @@ class Table {
         for (let i = 0; i < height; i++) { // Rows
             let newRow = [];
             for (let j = 0; j < width; j++) { // Cell in Row
+                // Special section to create START and GOAL
+                if (i == 0 && j == 0) {
+                    newRow.push(new Start([j, i], id));
+                    continue;
+                }
+                if (i == height-1 && j == width-1) {
+                    newRow.push(new Goal([j, i], id))
+                    continue;
+                }
                 newRow.push(new Cell([j, i], id));
                 id++;
             }
             this.table.push(newRow);
         }
-        console.log("Ran the Table constructor")
+        console.log("Ran the Table constructor");
+        console.log(this.table);
     }
 
     // Render the table as a <table> element in HTML
@@ -59,10 +48,26 @@ class Table {
         for (let i = 0; i < this.height; i++) { // Rows
             let newRow = base.appendChild(document.createElement("tr"));
             for (let j = 0; j < this.width; j++) { // Cell in Row
+                // Special code to render START and GOAL
+                if (i == 0 && j == 0) {
+                    let newCell = newRow.appendChild(document.createElement("td"));
+                    newCell.appendChild(document.createTextNode("S"));
+                    newCell.id = id;
+                    newCell.classList.add("start");
+                    continue;
+                }
+                if (i == this.height-1 && j == this.width-1) {
+                    let newCell = newRow.appendChild(document.createElement("td"));
+                    newCell.appendChild(document.createTextNode("G"));
+                    newCell.id = id;
+                    newCell.classList.add("goal");
+                    continue;
+                }
                 let newCell = newRow.appendChild(document.createElement("td"));
                 newCell.appendChild(document.createTextNode(this.table[i][j].coords));
-                newCell.id = id;
                 newCell.addEventListener("click", this.table[i][j].changeWallStatus)
+                newCell.id = id;
+                newCell.classList.add("cell");
                 id++;
             }
         }
@@ -91,33 +96,50 @@ class Table {
     }
 }
 
-class Cell{
+class Cell {
     constructor(coords, id) {
         this.coords = coords;
         this.id = id;
         this.isWall = false;
+        // These variables are used by the solvers when validating that the table has a start and goal & during the solve to see if the goal has been reached        
+        this.isStart = true;
+        this.isGoal = false;
     }
 
     changeWallStatus() {
         if (!this.isWall) {
             this.isWall = true;
+            this.classList.toggle("wall")
+            myTable.table[this.id%myTable.height+1][Math.floor(this.id/myTable.height)].isWall = true;
         } else {
             this.isWall = false;
+            this.classList.toggle("wall")
+            myTable.table[this.id%myTable.height+1][Math.floor(this.id/myTable.height)].isWall = false;
         }
-        console.log(`Changed wall status of ${this.coords}: ${this.isWall}`);
+        console.log(myTable.height)
+        console.log(Math.floor(this.id/myTable.height), this.id%myTable.height+1)
+        console.log(myTable.table[this.id%myTable.height+1][Math.floor(this.id/myTable.height)]);
+        console.log(`Changed wall status of ${Math.floor(this.id/myTable.height)}, ${this.id%myTable.height+1}: ${this.isWall}`);
     }
 }
 
 class Start extends Cell {
-    constructor(coords) {
-        super(coords)
+    constructor(coords, id) {
+        super(coords, id)
+        this.coords = coords;
+        this.id = id;
+        this.isStart = true;
+        this.isGoal = false;
     }
 }
 
 class Goal extends Cell {
-    constructor(coords) {
-        super()
+    constructor(coords, id) {
+        super(coords, id)
         this.coords = coords;
+        this.id = id;
+        this.isStart = false;
+        this.isGoal = true;
     }
 }
 
@@ -137,6 +159,20 @@ class BreadthFirst extends Solver {
     constructor(table) {
         super();
         this.name = "Breadth-First Search";
+        this.table = table;
+    }
+
+    getNeighbors(coords) {
+        let out = []
+    }
+
+    onGo() {
+        let queue = [];
+        for (let i = 0; i < this.table.height; i++) {
+            for (let j = 0; j < this.table.length; j++) {
+
+            }
+        }
     }
 }
 
@@ -149,7 +185,7 @@ class AStar extends Solver {
 
 // Code
 
-myTable = new Table(7, 5)
+myTable = new Table(10, 10) // This is the table used in all calculations
 myTable.render()
 
 function createNewTable() {
